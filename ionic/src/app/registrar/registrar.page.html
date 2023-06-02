@@ -1,0 +1,76 @@
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Bienvenido(a)</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding"><ion-list>
+    <ion-item>
+      <ion-label><ion-button [routerLink]="['/registrar']">Registrar factura</ion-button></ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label><ion-button [routerLink]="['/historial']">Ver historial facturas</ion-button></ion-label>
+    </ion-item><br><br><br>
+    <ion-item>
+      <ion-label><ion-button [routerLink]="['/login']">Cerrar sesion</ion-button></ion-label>
+    </ion-item></ion-list></ion-content>
+</ion-menu>
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title><ion-img src="assets/img/facturaujoimg.png" [routerLink]="['/decision']"  style="width: 150px; height: 40px;" alt="Facturaujo"></ion-img>
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="ion-padding">
+    <div class="contenedor">
+          <ion-card class="card-estrecho">
+        <ion-card-header>
+          <ion-card-title>REGISTRAR FACTURA</ion-card-title>
+        </ion-card-header>
+        <ion-card-content> 
+          <br>
+          <ion-label>Artículos</ion-label><br>
+          <ion-item>
+            <ion-list>
+              <ion-item *ngFor="let articulo of formData.articulos; let i = index">
+                <ion-label>ID: {{ articulo.iditem }}</ion-label> 
+                <ion-label position="floating">Detalle</ion-label>
+                <ion-input [(ngModel)]="articulo.detalle" name="detalle" type="text"></ion-input>
+                <ion-label position="floating">Nombre</ion-label>
+                <ion-input [(ngModel)]="articulo.nombre" name="nombre" type="text"></ion-input>
+                <ion-label position="floating">Precio</ion-label>
+                <ion-input [(ngModel)]="articulo.precio" name="precio" type="number"></ion-input>
+              </ion-item>
+            </ion-list>
+          </ion-item>
+          <ion-button expand="full" (click)="agregarArticulo()">Agregar artículo</ion-button><br><br><br>
+          <h3>Subtotal: {{ formData.subtotal }}</h3>
+          <br> <h3 *ngIf="formData.subtotal !== undefined">19% IVA: {{ formData.subtotal * 0.19 + formData.subtotal}}</h3><br>
+          
+          <h3>Ingresar porcentaje a descontar (Si desea)</h3>
+          <input type="number" [(ngModel)]="formData.descuentoInput" placeholder="Descuento"><br>
+          <br><ion-button expand="full" shape="round" (click)="aplicarDescuento()">Aplicar Descuento</ion-button>
+          <br><br><h4>TOTAL: {{ formData.total }}</h4><br>
+
+          <ion-button expand="full" color="warning" shape="round" (click)="enviarFormulario()">Enviar factura</ion-button>
+        </ion-card-content><br><br><br>
+        <ion-label><ion-button [routerLink]="['/historial']" fill="outline">Ver historial facturas</ion-button></ion-label>
+      </ion-card>
+    </div>
+  </ion-content>
+
+  <ion-footer>
+    <ion-toolbar>
+      <ion-title> Daniel Araujo © 2023</ion-title>
+    </ion-toolbar>
+  </ion-footer>
+  
+</div>
+
+
+

@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title><ion-img src="assets/img/facturaujoimg.png" [routerLink]="['/login']"   style="width: 150px; height: 40px;" alt="Facturaujo"></ion-img>
+    </ion-title>
+  </ion-toolbar>
+  
+</ion-header>
+
+<ion-content>
+
+
+  <div class="contenedor">
+    <ion-card class="card-estrecho">
+    <ion-card-header>
+      <ion-card-title>Crea una cuenta</ion-card-title>
+    </ion-card-header>
+    <ion-card-content> 
+     
+      <ion-item>
+       <ion-input label="email" placeholder="email" [(ngModel)]="email"></ion-input>
+      </ion-item>
+
+        <ion-item>
+          <ion-input label="password" placeholder="password" value="" [(ngModel)]="password"></ion-input>
+         </ion-item>
+    <br>
+    <ion-button expand="full" (click)="onRegistrarse()">Registrarse</ion-button><br> 
+
+    <h1 style="font-size: 13px;">Mínimo 8 caracteres tanto en correo (sin contar dominio) como en contraseña para poder loguearse exitosamente.</h1>
+  
+  </ion-card-content>
+  </ion-card>
+</div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title> Daniel Araujo © 2023</ion-title>
+  </ion-toolbar>
+</ion-footer>

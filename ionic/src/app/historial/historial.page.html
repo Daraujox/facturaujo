@@ -1,0 +1,85 @@
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Bienvenido(a)</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding"><ion-list>
+    <ion-item>
+      <ion-label><ion-button [routerLink]="['/registrar']">Registrar factura</ion-button></ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label><ion-button [routerLink]="['/historial']">Ver historial facturas</ion-button></ion-label>
+    </ion-item><br><br><br>
+    <ion-item>
+      <ion-label><ion-button [routerLink]="['/login']">Cerrar sesion</ion-button></ion-label>
+    </ion-item></ion-list></ion-content>
+</ion-menu>
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title><ion-img src="assets/img/facturaujoimg.png"  [routerLink]="['/decision']"   style="width: 150px; height: 40px;" alt="Facturaujo"></ion-img>
+      </ion-title>
+    </ion-toolbar>
+  </ion-header><br>
+
+  <ion-searchbar animated="true" placeholder="Digita el numero de factura a buscar"></ion-searchbar><br>
+ 
+    <div class="ion-text-center">
+      <h1>Facturas registradas</h1>
+    </div>
+
+  <ion-content class="ion-padding">
+
+
+    <ion-list>
+      <ion-item *ngFor="let registro of formData">
+        <ion-label>
+          <div class="contenedor">
+            <ion-card class="card-estrecho">
+            <h2>FACTURA</h2><br>
+            <p>Artículos:</p>
+            <div *ngFor="let articulo of registro.articulos" class="articulo-container">
+              <ion-item>
+                <p><strong>ID: {{ articulo.iditem }}</strong></p>
+              </ion-item>
+              <ion-item>
+                <p>Detalle: {{ articulo.detalle }}</p>
+              </ion-item>
+              <ion-item>
+                <p>Nombre: {{ articulo.nombre }}</p>
+              </ion-item>
+              <ion-item>
+                <p>Precio: {{ articulo.precio }}</p>
+              </ion-item>
+            </div><br>
+            <div>
+            <p>Subtotal: {{ registro.subtotal }}</p><br>
+            <p> 19% IVA: {{ registro.iva }}</p><br>
+            <p> Descuento del {{registro.descuentoInput}}%: {{ registro.descuento }}</p><br>
+            <p> TOTAL: {{ registro.total }}</p><br><br><br>
+            <p>Fecha: {{ registro.fecha }}</p></div>
+            
+          </ion-card>
+          </div>
+        </ion-label>
+      </ion-item>
+      
+    </ion-list>
+    <ion-label><ion-button [routerLink]="['/registrar']" fill="outline">Registrar factura</ion-button></ion-label>
+
+  </ion-content>
+
+  <ion-footer>
+    <ion-toolbar>
+      <ion-title> Daniel Araujo © 2023</ion-title>
+    </ion-toolbar>
+  </ion-footer>
+  
+</div>
+
+
+
